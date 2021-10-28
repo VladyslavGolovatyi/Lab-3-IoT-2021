@@ -7,9 +7,9 @@
 
 void like(char* names, char* res)
 {
-    //n-кількість слів, i-кількість символів
+    //n-number of words, i-number of symbols
     int n = 1, i = 0;
-    //масив, який зберігає координати пробілів
+    //array, which contains coordinates of spaces
     int arr[15] = { 0 };
     char sym[2] = { 0 };
 
