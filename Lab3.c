@@ -7,27 +7,25 @@
 
 void like(char* names, char* res)
 {
-    //n-number of words, i-number of symbols
-    int n = 1, i = 0;
-    //array, which contains coordinates of spaces
+    int number_of_words = 1, number_of_symbols = 0;
     int arr[15] = { 0 };
     char sym[2] = { 0 };
 
-    for (; names[i] != '\0'; ++i)
+    for (; names[number_of_symbols] != '\0'; ++number_of_symbols)
     {
-        if (names[i] == ' ')
+        if (names[number_of_symbols] == ' ')
         {
-            arr[n] = i;
-            ++n;
+            arr[number_of_words] = number_of_symbols;
+            ++number_of_words;
         }
     }
 
-    if (i == 1)
+    if (number_of_symbols == 1)
         strcat(res, "no one likes this");
 
-    else if (n == 1)
+    else if (number_of_words == 1)
     {
-        names[i - 1] = ' ';
+        names[number_of_symbols - 1] = ' ';
         strcat(res, names);
         strcat(res, "likes this");
     }
@@ -42,10 +40,10 @@ void like(char* names, char* res)
     }
 
 
-    if (n == 2)
+    if (number_of_words == 2)
     {
         strcat(res, " and");
-        for (int j = arr[1]; j < i - 1; ++j)
+        for (int j = arr[1]; j < number_of_symbols - 1; ++j)
         {
             sym[0] = names[j];
             strcat(res, sym);
@@ -53,7 +51,7 @@ void like(char* names, char* res)
         strcat(res, " ");
     }
 
-    else if (n == 3)
+    else if (number_of_words == 3)
     {
         strcat(res, ",");
         for (int j = arr[1]; j < arr[2]; ++j)
@@ -62,7 +60,7 @@ void like(char* names, char* res)
             strcat(res, sym);
         }
         strcat(res, " and");
-        for (int j = arr[2]; j < i - 1; ++j)
+        for (int j = arr[2]; j < number_of_symbols - 1; ++j)
         {
             sym[0] = names[j];
             strcat(res, sym);
@@ -70,7 +68,7 @@ void like(char* names, char* res)
         strcat(res, " ");
     }
 
-    else if (n > 3)
+    else if (number_of_words > 3)
     {
         strcat(res, ",");
         for (int j = arr[1]; j < arr[2]; ++j)
@@ -80,17 +78,17 @@ void like(char* names, char* res)
         }
         strcat(res, " and ");
         char res1[SIZE] = { 0 };
-        sprintf( res1, "% d", n - 2);
+        sprintf(res1, "% d", number_of_words - 2);
         strcat(res, res1);
         strcat(res, " others ");
     }
-    if (n > 1)
+    if (number_of_words > 1)
         strcat(res, "like this");
 }
 int main()
 {
     char names[SIZE];
-    char res[SIZE]  = { 0 };
+    char res[SIZE] = { 0 };
     fgets(names, SIZE, stdin);
     like(names, res);
     puts(res);
